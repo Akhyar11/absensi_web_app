@@ -10,14 +10,10 @@ import { useRouter } from "next/navigation";
 import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import { Mapel } from "@/model/mapel";
 import { JadwalMapel } from "@/model/jadwalMapel";
-import { Guru } from "@/model/guru";
-import { Kelas } from "@/model/kelas";
 
 const InformasiJadwalMapel = () => {
   const [dataMapel, setDataMapel] = useState<Mapel[]>([]);
   const [dataJadwalMapel, setDataJadwalMapel] = useState<JadwalMapel[]>([]);
-  const [dataGuru, setDataGuru] = useState<Guru[]>([]);
-  const [dataKelas, setDataKelas] = useState<Kelas[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const adaCookie = Cookies.get("token");
@@ -68,29 +64,6 @@ const InformasiJadwalMapel = () => {
       });
 
       if (response.data.message == "Mapel deleted successfully") {
-        await fetchData();
-      } else {
-        await fetchData();
-        setError(response.data.message);
-      }
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.log(error);
-    }
-  };
-
-  const handleDeleteJadwal = async (id: string) => {
-    setIsLoading(true);
-    try {
-      const response = await axios.delete(
-        assets.API_LINK + "/jadwalMapel/" + id,
-        {
-          headers: { Authorization: `Bearer ${adaCookie}` },
-        }
-      );
-
-      if (response.data.message == "Jadwal deleted") {
         await fetchData();
       } else {
         await fetchData();
@@ -196,7 +169,18 @@ const InformasiJadwalMapel = () => {
                   className="border-b border-slate-200"
                 >
                   <td className="py-3 px-6">{user.id_mapel}</td>
-                  <td className="py-3 px-6">Ke-{user.jam}</td>
+                  <td className="py-3 px-6">
+                    Ke-{user.jam} / Jam{" "}
+                    {user.jam == 1
+                      ? 7
+                      : user.jam == 2
+                      ? 9
+                      : user.jam == 3
+                      ? 12
+                      : user.jam == 4
+                      ? 14
+                      : "Not Define"}
+                  </td>
                   <td className="py-3 px-6">{user.hari}</td>
                   <td className="py-3 px-6">{user.id_guru}</td>
                   <td className="py-3 px-6">{user.id_kelas}</td>

@@ -22,11 +22,6 @@ export default function Navbar() {
             </button>
           </li>
           <li className="py-2 px-4 hover:bg-slate-500">
-            <button onClick={() => handleLink("/admin/informasi-absensi")}>
-              Absensi
-            </button>
-          </li>
-          <li className="py-2 px-4 hover:bg-slate-500">
             <button onClick={() => handleLink("/admin/jadwal-mapel")}>
               Jadwal Mapel
             </button>

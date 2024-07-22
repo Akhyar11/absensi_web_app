@@ -170,10 +170,10 @@ const AddSiswaForm = () => {
                 <option value="" disabled>
                   Pilih Jam
                 </option>
-                <option value="1">Ke-1</option>
-                <option value="2">Ke-2</option>
-                <option value="3">Ke-3</option>
-                <option value="4">Ke-4</option>
+                <option value="1">Ke-1 / Jam 7</option>
+                <option value="2">Ke-2 / Jam 9</option>
+                <option value="3">Ke-3 / Jam 12</option>
+                <option value="4">Ke-4 / Jam 13</option>
               </select>
             </div>
             <div className="mt-4">
